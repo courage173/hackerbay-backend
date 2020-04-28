@@ -10,7 +10,7 @@ const Imagethumbnail = async (req, res) => {
   }
   const imageRegex = /\.(jpeg|jpg|gif|png)$/;
   if (imageRegex.test(imageUrl) === false) {
-    return res.status(403).json({
+    return res.status(400).json({
       status: 'error',
       message: 'invalid image url'
     });
@@ -20,7 +20,7 @@ const Imagethumbnail = async (req, res) => {
   return res.status(200).json({
     status: "success",
     thumbnail
-  });
+  })
 };
 
 export default Imagethumbnail;

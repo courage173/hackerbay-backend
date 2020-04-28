@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint ./src/ --quiet",
     "start": "NODE_ENV=dev nodemon --exec babel-node ./src/server.js",
+    "start:prod": "NODE_ENV=production node --experimental-modules ./src/server.js",
     "test": "cross-env-shell NODE_ENV=test && nyc mocha src/tests/**/*.js --require @babel/register --reporter spec --timeout 25000"
   },
   "repository": {
@@ -25,6 +26,9 @@
     "fast-json-patch": "^3.0.0-1",
     "image-thumbnail": "^1.0.8",
     "jsonwebtoken": "^8.5.1",
+    "openapi": "0.0.1-security",
+    "swagger-ui": "^3.25.1",
+    "swagger-ui-dist": "^3.25.1",
     "validatorjs": "^3.18.1"
   },
   "devDependencies": {
@@ -32,16 +36,22 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
+    "babel-core": "^6.26.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "coveralls": "^3.0.14",
+    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "gulp": "^4.0.2",
     "istanbul": "^0.4.5",
+    "js-yaml": "^3.13.1",
     "mocha": "^7.1.1",
     "node-mocks-http": "^1.8.1",
-    "nyc": "^15.0.1"
+    "nyc": "^15.0.1",
+    "require-dir": "^1.2.0",
+    "run-sequence": "^2.2.1",
+    "swagger-ui-express": "^4.1.4"
   }
 }

@@ -4,7 +4,7 @@ export const createToken = (data) => jwt.sign(data, 'itsABeautifulToken', { expi
 
 export const verifyToken = (req, res, next) => {
   if (!req.headers.authorization) {
-    return res.status(403).json({
+    return res.status(401).json({
       status: 'error',
       message: 'No token found'
     });

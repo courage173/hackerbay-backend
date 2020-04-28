@@ -1,4 +1,5 @@
-import { createToken } from '../middlewares/token';
+// eslint-disable-next-line import/extensions
+import { createToken } from '../middlewares/token.js';
 
 const login = (req, res) => {
   const { username, password } = req.body;
