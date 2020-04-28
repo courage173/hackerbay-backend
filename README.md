@@ -1,8 +1,8 @@
 # hackerbay microservice
 
-### ##Hackerbay microservice Api collection
 
 
+### this collection contains following request
 - login a user with any name and password
 
 - create image thumbnail for public image url
