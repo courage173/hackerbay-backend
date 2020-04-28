@@ -55,13 +55,13 @@ Example Response
 ```
 http://localhost:3000/v1/image_thumbnail
 ```
-### Api endpoint to image_thumbnail will return the thumbnail of an image
+- Api endpoint to image_thumbnail will return the thumbnail of an image
 
-### A successfull request will result in an http 200 status code if image url is invalid it will return http 400
+- A successfull request will result in an http 200 status code if image url is invalid it will return http 400
 
-### status code no token on request will return http 401 status code
+- status code no token on request will return http 401 status code
 
-#### HEADERS
+- HEADERS
 
 ```
 BODY raw
@@ -70,9 +70,9 @@ BODY raw
 Content-Type
 application/json
 ```
-#### {
 
 ```
+{
 "imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
 }
 ```
