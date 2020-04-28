@@ -1,6 +1,8 @@
 # hackerbay microservice
 
-
+```
+- The online version of the swagger Api documentation docummented is avaliable at \api-docs.
+```
 
 ### this collection contains following request
 - login a user with any name and password
