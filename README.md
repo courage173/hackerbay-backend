@@ -2,17 +2,17 @@
 
 ### ##Hackerbay microservice Api collection
 
-### this collection following request
+### this collection contains following request
 
-### -login a user with any name and password
+- login a user with any name and password
 
-### create image thumbnail for public image url
+- create image thumbnail for public image url
 
-### perfom json patching on a json object
+- perfom json patching on a json object
 
-### it also returns the logs of all request made to the endpoints
+- it also returns the logs of all request made to the endpoints
 
-## POST /login
+- POST login
 
 ```
 http://localhost:3000/v1/login
@@ -34,14 +34,7 @@ BODY raw
 Example Request
 login example
 ```
-m
-
 ```
-Documentation Settings
-```
-
-```
-curl --location --request POST 'http://localhost:3000/v1/login' \
 --data-raw '{
 "username": "kola",
 "password" : "password"
@@ -57,7 +50,7 @@ Example Response
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvbGEiLCJwYXNzd29yZCI6InBhc3N3b3JkIiw
 }
 ```
-## POST http://localhost:3000/v1/image_thumbnail
+## POST image_thumbnail
 
 ```
 http://localhost:3000/v1/image_thumbnail
@@ -86,11 +79,6 @@ application/json
 ```
 Example Request
 ```
-m
-
-```
-Documentation Settings
-```
 
 ```
 image thumbnail example
@@ -98,9 +86,9 @@ image thumbnail example
 ```
 curl --location --request POST 'http://localhost:3000/v1/image_thumbnail' \
 --header 'Content-Type: application/json' \
---data-raw '{
 ```
 ```
+data-raw '{
 "imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"
 }'
 ```
@@ -120,18 +108,18 @@ Example Response
 219,
 0,
 ```
-## PATCH http://localhost:3000/v1/json-patch
+## PATCH json-patch
 
 ```
 http://localhost:3000/v1/json-patch
 ```
-### Api endpoint to json-patch will return a patched json object
+- Api endpoint to json-patch will return a patched json object
 
-### A successfull request will result in an http 200 status code if json object and patch object is missing it
+- A successfull request will result in an http 200 status code if json object and patch object is missing it
 
-### will return http 400 status code no token on request will return http 401 status code
+- will return http 400 status code no token on request will return http 401 status code
 
-#### HEADERS
+
 
 ```
 BODY raw
@@ -140,17 +128,20 @@ BODY raw
 Content-Type
 application/json
 ```
-m
-
-### View More
 
 ```
-Documentation Settings
+json patch example request
 ```
 
-#### {
+```
+json-patch example
+curl --location --request PATCH 'http://localhost:3000/v1/json-patch' \
+--header 'Content-Type: application/json' \
+```
 
 ```
+--data-raw{
+{
 "jsonObject": {
 "firstName": "albert",
 "PhoneNumbers": []
@@ -159,20 +150,13 @@ Documentation Settings
 {
 "op": "replace",
 "path": "/PhoneNumbers",
+"value": 2347063824176
+}]
+}
 ```
-(^) "value": 2347063824176
-Example Request
-json-patch example
-curl --location --request PATCH 'http://localhost:3000/v1/json-patch' \
---header 'Content-Type: application/json' \
---data-raw '{
-"jsonObject": {
-"firstName": "albert",
-"PhoneNumbers": []
-},
-"jsonPatchObject": [
-{
-"op": "replace",
+
+
+```
 Example Response
 200 － OK
 {
@@ -182,29 +166,19 @@ Example Response
 "PhoneNumbers": 2347063824176
 }
 }
-
-## GET http://localhost:3000/v1/logs
+```
+## GET Logs
 
 ```
 http://localhost:3000/v1/logs
 ```
-### Api endpoint to logs will return the logs of all request made to endpoints
+- Api endpoint to logs will return the logs of all request made to endpoints
 
-m
+- A successfull request will result in an http 200 status code no token on request will return http 401
 
-### View More
+- status code
 
-### View More
-
-```
-Documentation Settings
-```
-
-### A successfull request will result in an http 200 status code no token on request will return http 401
-
-### status code
-
-#### HEADERS
+- HEADERS
 
 ```
 BODY raw
@@ -213,12 +187,9 @@ BODY raw
 Content-Type
 application/json
 ```
-#### {
 
-```
-"imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jg"
-}
-```
+
+
 ```
 Example Request
 request logs example
@@ -226,11 +197,7 @@ request logs example
 ```
 curl --location --request GET 'http://localhost:3000/v1/logs' \
 --header 'Content-Type: application/json' \
---data-raw '{
-```
-```
-"imageUrl": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jg"
-}'
+
 ```
 ```
 Example Response
@@ -248,11 +215,9 @@ PATCH /v1/json-patch 200 1ms
 GET /v1/logs 200 6ms
 POST /v1/image_thumbnail 404 1ms
 ```
-m
 
-### View More
 
 ```
-Documentation Settings
+End
 ```
 
