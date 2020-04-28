@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  title: microservice Api
+  version: 0.1.9
+  description: This is a microservice api.
+servers: 
+ - url: http://localhost:3000/v1
+paths:
+  /login:
+    post:
+      tags:
+        - login
+      summary: User login
+      description: ""
+      operationId: auth
+      requestBody:
+        description: required fields to login*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'         
+      responses:
+        "200":
+          description: Login Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'success'
+                  token:
+                    type: string
+                    example: hdfjhjdkjsjjgu-dfgnjdnjgkfjgd-sdnfgjdfnjdk
+        "400":
+          description: Error username or password missing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /image_thumbnail:
+    post:
+      tags:
+        - thumbnail
+      summary: Thumbnail Generator
+      description: this endpoint accepts a public url and returns the resulting thumbnail
+      operationId: thumbnail
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: accepts image url parameter*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Thumbnail'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'success'
+                  thumbnail:
+                    type: string
+                    format: binary
+                    example: hdfjhjdkjsjjgu-dfgnjdnjgkfjgd-sdnfgjdfnjdk
+        "401":
+          description: token Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: no image url found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "400":
+          description: Invalid image url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /json-patch:
+    patch:
+      tags:
+        - json patching
+      summary: Json patching
+      description: this endpoint accepts an an object to patch and a patch to apply and return the resulting patch json file
+      operationId: json patch
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: accepts image url parameter*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'success'
+                  jsonObject:
+                    type: object
+                    example: {
+                              firstName: 'albert',
+                              PhoneNumbers: [2347063824176]
+                            }
+        "403":
+          description: no token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "401":
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'        
+        "400":
+          description: missing input filed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'      
+  /logs:
+    get:
+      tags:
+        - logs
+      summary: logs
+      description: this endpoint returns the log
+      operationId: logs
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+                properties:
+                  logs:
+                    type: string
+                    example: POST	/v1/image_thumbnail	403	130ms
+                 
+        "403":
+          description: no token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "401":
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'        
+        "400":
+          description: missing input filed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 
+components:
+  schemas:
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+          example: test@test.com
+        password:
+          type: string
+          example: password123
+    Thumbnail:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          example: https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg
+    JsonPatch:
+      type: object
+      properties:
+        jsonObject:
+          type: object
+          example: {
+                  firstName: 'albert',
+                  PhoneNumbers: []
+                      }
+        jsonPatchObject:
+          type: object
+          example:  [
+          { op: "replace", path: "/PhoneNumbers", value: 2347063824176 }
+        ]
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message: 
+          type: string
+          example: error message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+ 
+    
