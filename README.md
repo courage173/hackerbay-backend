@@ -2,7 +2,6 @@
 
 ### ##Hackerbay microservice Api collection
 
-### this collection contains following request
 
 - login a user with any name and password
 
@@ -11,6 +10,7 @@
 - perfom json patching on a json object
 
 - it also returns the logs of all request made to the endpoints
+###
 
 ## POST login
 
