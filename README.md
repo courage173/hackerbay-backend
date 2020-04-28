@@ -1,7 +1,7 @@
 # hackerbay microservice
 
 ```
-- The online version of the swagger Api documentation docummented is avaliable at \api-docs.
+- The online version of the swagger Api documentation is avaliable at \api-docs for testing.
 ```
 
 ### this collection contains following request
