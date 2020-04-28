@@ -12,14 +12,14 @@
 
 - it also returns the logs of all request made to the endpoints
 
-- POST login
+## POST login
 
 ```
 http://localhost:3000/v1/login
 ```
-### Api endpoint to Login user in the system
+- Api endpoint to Login user in the system
 
-### A successfull login will result in an http 200 status code
+- A successfull login will result in an http 200 status code
 
 ```
 BODY raw
