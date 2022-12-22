@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "fast-json-patch": "^3.0.0-1",
     "image-thumbnail": "^1.0.8",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "openapi": "0.0.1-security",
     "swagger-ui": "^3.25.1",
     "swagger-ui-dist": "^3.25.1",
